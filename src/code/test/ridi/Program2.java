@@ -1,4 +1,4 @@
-package code.test;
+package code.test.ridi;
 
 import static org.junit.Assert.assertArrayEquals;
 
