@@ -1,9 +1,14 @@
 package practices.commons;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Tools {
 	public static boolean isPrime(String number) {
@@ -45,5 +50,20 @@ public class Tools {
 			integerArray[i] = array[i];
 		}
 		return integerArray;
+	}
+
+	public static List<Integer> toList(int[] array) {
+		return Arrays.stream(array).boxed().collect(Collectors.toList());
+	}
+
+	public static long countByPattern(String str, String content) {
+		Pattern pattern = Pattern.compile(str);
+		Matcher matcher = pattern.matcher(content);
+
+		long result = 0L;
+		while (matcher.find())
+			result++;
+
+		return result;
 	}
 }
