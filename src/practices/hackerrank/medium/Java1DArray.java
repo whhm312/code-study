@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class Java1DArray {
+
 	@Test
 	public void test1() {
 		int leap = 3;
@@ -34,27 +35,28 @@ public class Java1DArray {
 		assertFalse(canWin(leap, game));
 	}
 
+	@Test
+	public void testFindError() {
+		int leap = 52;
+		int[] game = { 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+				0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0,
+				0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1 };
+		assertTrue(canWin(leap, game));
+	}
+
 	public static boolean canWin(int leap, int[] game) {
-		int idx = 0;
-		int endIdx = game.length - 1;
-		while (idx < endIdx) {
-			if (idx + leap <= endIdx && game[idx + leap] == 0) {
-				idx += leap;
-				game[idx] = 1;
-			} else if (idx + 1 <= endIdx && game[idx + 1] == 0) {
-				idx += 1;
-				game[idx] = 1;
-			} else {
-				if (idx + leap > endIdx) {
-					return true;
-				} else if (idx != 0 && game[idx - 1] == 0) {
-					idx -= 1;
-					game[idx] = 1;
-				} else {
-					return false;
-				}
-			}
+		return isWin(leap, game, 0);
+	}
+
+	private static boolean isWin(int leap, int[] game, int i) {
+		if (i < 0 || game[i] == 1) {
+			return false;
+		} else if (i >= game.length - 1 || i + leap > game.length - 1) {
+			return true;
 		}
-		return true;
+
+		game[i] = 1;
+
+		return isWin(leap, game, i + leap) || isWin(leap, game, i + 1) || isWin(leap, game, i - 1);
 	}
 }
