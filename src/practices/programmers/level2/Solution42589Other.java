@@ -9,32 +9,21 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
-class WrapPriority {
-	int priority = 0;
-
-	WrapPriority(int priority) {
-		this.priority = priority;
-	}
-}
-
-public class Solution42587 {
+public class Solution42589Other {
 	public int solution(int[] priorities, int location) {
-		System.out.println();
-		WrapPriority locationValue = null;
-		Queue<WrapPriority> queue = new LinkedList<WrapPriority>();
+		String locationValue = null;
+		Queue<String> queue = new LinkedList<String>();
 		for (int i = 0; i < priorities.length; i++) {
-			WrapPriority wrapPriority = new WrapPriority(priorities[i]);
+			String wrapPriority = new String(priorities[i] + "");
 			queue.add(wrapPriority);
-			System.out.println("wrapPriority : " + wrapPriority);
 			if (i == location) {
 				locationValue = wrapPriority;
-				System.out.println("locationValue : " + locationValue);
 			}
 		}
 
-		WrapPriority max = max(queue);
+		String max = max(queue);
 		int printOut = 1;
-		WrapPriority print = null;
+		String print = null;
 		while (queue.size() > 0) {
 			print = queue.poll();
 			if (max == locationValue) {
@@ -50,14 +39,16 @@ public class Solution42587 {
 		return printOut;
 	}
 
-	private WrapPriority max(Queue<WrapPriority> queue) {
-		WrapPriority max = null;
-		int intMax = 0;
-		List<WrapPriority> list = queue.stream().collect(Collectors.toList());
+	private String max(Queue<String> queue) {
+		String max = null;
+		int maxInt = 0;
+		int tempInt = 0;
+		List<String> list = queue.stream().collect(Collectors.toList());
 		for (int i = 0; i < list.size(); i++) {
-			if (intMax < list.get(i).priority) {
+			tempInt = Integer.parseInt(list.get(i));
+			if (maxInt < tempInt) {
 				max = list.get(i);
-				intMax = list.get(i).priority;
+				maxInt = tempInt;
 			}
 		}
 		return max;
