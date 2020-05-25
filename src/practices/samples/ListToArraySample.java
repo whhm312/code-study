@@ -10,9 +10,17 @@ import org.junit.Test;
 public class ListToArraySample {
 
 	private String[] toStringArray(List<String> list) {
-		String[] array = new String[list.size()];
-		list.toArray(array);
-		return array;
+		return (String[]) list.toArray(new String[list.size()]);
+	}
+
+	@Test
+	public void testNewToStringArray() {
+		String[] expecteds = { "a", "b", "c" };
+		List<String> list = new ArrayList<String>();
+		list.add("a");
+		list.add("b");
+		list.add("c");
+		assertArrayEquals(expecteds, toStringArray(list));
 	}
 
 	private int[] toIntArray(List<Integer> list) {
