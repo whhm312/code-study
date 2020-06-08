@@ -35,7 +35,7 @@ public class Program3 {
 		int findIdx = -1;
 		int nextIdx = -1;
 		int length = custIds.length - 1;
-		int gap = -1;
+//		int gap = -1;
 		int whileIdx = 0;
 
 		findIdx = Arrays.binarySearch(custIds, startIdx, length, uniqueCustIds[0]);
