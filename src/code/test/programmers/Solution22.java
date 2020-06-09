@@ -1,4 +1,4 @@
-package practices.programmers.cote;
+package code.test.programmers;
 
 import static org.junit.Assert.assertEquals;
 

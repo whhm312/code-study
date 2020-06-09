@@ -1,4 +1,4 @@
-package practices.codility;
+package code.test.streami;
 
 import static org.junit.Assert.assertEquals;
 

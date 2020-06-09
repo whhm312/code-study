@@ -1,4 +1,4 @@
-package practices.programmers.cote;
+package code.test.programmers;
 
 public class Solution31 {
 	public int[] solution(int total_sp, int[][] skills) {

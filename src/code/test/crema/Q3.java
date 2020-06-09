@@ -1,4 +1,4 @@
-package practices.hackerrank.crema;
+package code.test.crema;
 
 import static java.util.stream.Collectors.toList;
 
