@@ -4,9 +4,20 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class Part1 {
+public class Part1_2 {
 	public int solution(int n, int[] stations, int w) {
-		int answer = 3;
+		int answer = 0;
+		int stationIdx = 0;
+		int position = 1;
+		while (position <= n) {
+			if (stationIdx < stations.length && stations[stationIdx] - w <= position) {
+				position = stations[stationIdx] + w + 1;
+				stationIdx = stationIdx + 1;
+			} else {
+				answer++;
+				position += w + 1 + w;
+			}
+		}
 		return answer;
 	}
 
