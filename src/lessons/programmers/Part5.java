@@ -2,21 +2,33 @@ package lessons.programmers;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 
 public class Part5 {
 	public int solution(String[][] clothes) {
-		int answer = 0;
-		// 각 의상 갯수 만큼 +
-		for (int i = 0; i < clothes.length; i++) {
-			answer += clothes[i].length / 2;
-		}
-		
-		
-		// 각 의상별로 분리하기
-		// 각 의상 갯수 * 후 더하기
+		int answer = Arrays.stream(clothes).map(c -> c[1]).distinct()
+				.map(type -> (int) Arrays.stream(clothes).filter(c -> c[1].equals(type)).count()).map(c -> c + 1)
+				.reduce(1, (c, n) -> c * n);
 
-		return answer;
+		return answer - 1;
+	}
+
+	public int mySolution(String[][] clothes) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		for (String[] strings : clothes) {
+			map.put(strings[1], map.getOrDefault(strings[1], 0) + 1);
+		}
+
+		int answer = 1;
+		for (int i : map.values()) {
+			answer *= i + 1;
+		}
+
+		return answer - 1;
 	}
 
 	@Test
