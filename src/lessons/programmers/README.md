@@ -1,4 +1,6 @@
 # [Java/문제풀이] 코딩테스트 광탈 방지 Kit: Java편 목록 
+- level2 : 프로그래머스의 레벨2 java 문제 풀이
+
 - Part1. 그리디(Greedy) 대표 문제: 기지국 설치
 
 - Part2. 정렬(Sort) 대표 문제: 가장 큰 수
